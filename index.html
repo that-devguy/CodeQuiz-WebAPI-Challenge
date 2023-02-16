@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/ced0ff2264.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="./assets/css/reset.css">
     <link rel="stylesheet" href="./assets/css/style.css">
     <title>Code Quiz</title>
@@ -11,29 +12,28 @@
 <body>
     <header>
         <a href="" class="high-scores">View high scores</a>
-        <p class="count-down">Time: <span id="time-remaining"></span></p>
     </header>
 <!-- start screen section -->
     <div class="container" id="start-screen">
         <i class="fa-solid fa-code"></i>
-        <h1>Coding Quiz Challenge</h1>
+        <h1>CODING QUIZ</h1>
         <p class="desc">Try to answer the following code-related questions within the time limit. Keep in mind that the incorrect answers will penalize your score/time by ten seconds!</p>
         <button id="start-btn">Start Quiz</button>
     </div>
 <!-- quiz screen section -->
-    <div class="container" id="quiz-screen">
+    <div class="container" id="quiz-screen" style="display:none">
+        <p class="count-down">Time: <span id="time-remaining"></span></p>
         <h2 id="title">Question</h2>
         <ul id="choices"></ul>
     </div>
 <!-- highscores screen section -->
-    <div class="container" id="highscores-screen">
+    <div class="container" id="highscores-screen" style="display:none">
 
     </div>
     <footer>
         <h4>Made with 🧡 by that_<span id="dev">dev</span>guy</h4>
         <p>© 2022 that_devguy</p>
     </footer>
-    <script src="./assets/js/scripts.js"></script>
-    <script src="https://kit.fontawesome.com/ced0ff2264.js" crossorigin="anonymous"></script>
+    <script src="./assets/js/script.js"></script>
 </body>
 </html>
