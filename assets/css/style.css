@@ -3,7 +3,7 @@
 :root {
     --text1: 'Oswald', sans-serif;
     --text2: 'Old Standard TT', sans-serif;
-    --bg-color: #f8f9fb;
+    --bg-color: #ececec;
     --color1: #ff8d01;
     --color2: #ffbf3d;
     --text-color: #200440;
@@ -30,6 +30,12 @@ header {
 
 a {
     text-decoration: none;
+}
+
+i {
+    font-size: 3rem;
+    color: var(--color1);
+    margin: 0 auto 2rem auto;
 }
 
 .container {
@@ -84,9 +90,10 @@ footer {
 
 footer p {
     font-size: 1.5rem;
+    margin-top: 1rem;
 }
 
-.dev {
+#dev {
     font-size: 1.75rem;
     color: var(--color1);
 }
