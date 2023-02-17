@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Merriweather:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Merriweather:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
 :root {
     --text1: 'Lato', sans-serif;
@@ -41,7 +41,7 @@ i {
 
 .container {
     width: 75%;
-    height: 50rem;
+    height: 55rem;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -108,13 +108,31 @@ button:hover {
     flex-wrap: wrap;
     align-content: start;
     justify-content: space-between;
-    margin: 7rem 0;
+    margin: 7rem 0 1rem 0;
 }
 
 #answers .btn {
     margin: .65rem 0;
     width: 40rem;
     text-align: left;
+}
+
+#result {
+    visibility: hidden;
+}
+
+h3 {
+    font-size: 2rem;
+    color: var(--color2);
+    font-style: italic;
+    margin: 0 1.5rem;
+}
+
+hr {
+    background-color: var(--color2);
+    opacity: 50%;
+    width: 40rem;
+    margin-bottom: .5rem;
 }
 
 footer {

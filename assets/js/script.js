@@ -54,26 +54,34 @@ let timeRemainingEl = document.getElementById('time-remaining');
 let quizScreenEl = document.getElementById('quiz-screen');
 let questionEl = document.getElementById('question');
 let answerEl = document.getElementById('answers');
+let nextButton = document.getElementById('next-btn');
+let resultEl = document.getElementById('result');
+let resultText = document.getElementById('result-text');
 
 
-let shuffledQuestions, currentQuestionIndex
+let shuffledQuestions, currentQuestionIndex;
 
 
 startButton.addEventListener('click', startGame);
+answerEl.addEventListener('click', () => {
+    currentQuestionIndex++;
+    setNextQuestion();
+});
 
 function startGame() {
     // console.log('Started');
     startScreenEl.style.display = 'none';
     shuffledQuestions = questions.sort(() => Math.random() - 0.5);
-    currentQuestionIndex = 0
+    currentQuestionIndex = 0;
     quizScreenEl.style.display = 'flex';
-    setNextQuestion()
+    setNextQuestion();
     
-}
+};
 
 function setNextQuestion() {
+    clearQuestion();
     showQuestion(shuffledQuestions[currentQuestionIndex]);
-}
+};
 
 // displays the question to the screen and verifies the answers are correct
 function showQuestion(question) {
@@ -82,22 +90,35 @@ function showQuestion(question) {
         let button = document.createElement('button');
         button.innerText = answer.text;
         button.classList.add('btn');
-        //verifies the answer is correct
         if (answer.correct) {
-            button.dataset.correct = answer.correct
+            button.dataset.correct = answer.correct;
         }
-        button.addEventListener('click', selectAnswer)
-        answerEl.appendChild(button)
+        button.addEventListener('click', selectAnswer);
+        answerEl.appendChild(button);
     })
-}
+};
 
+// clears the previous question and answers from the screen
+function clearQuestion() {
+    while (answerEl.firstChild) {
+        answerEl.removeChild(answerEl.firstChild);
+    }
+};
 
-function selectAnswer() {
-    
-}
+// verifies if answer is correct and updates the results
+function selectAnswer(e) {
+    let selectedButton = e.target
+    let correct = selectedButton.dataset.correct
+    checkAnswer(document.body, correct);
+};
 
-
-
-
-
-
+function checkAnswer(button, correct) {
+    if (correct) {
+        resultText.textContent = ('Correct');
+        resultEl.style.visibility = "visible";
+    } 
+    else {
+        resultText.textContent = ('Wrong');
+        resultEl.style.visibility = "visible";
+    }
+};
