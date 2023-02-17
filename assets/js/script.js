@@ -52,6 +52,9 @@ let startButton = document.getElementById('start-btn');
 let startScreenEl = document.getElementById('start-screen');
 let timeRemainingEl = document.getElementById('time-remaining');
 let quizScreenEl = document.getElementById('quiz-screen');
+let questionEl = document.getElementById('question');
+let answerEl = document.getElementById('answers');
+
 
 let shuffledQuestions, currentQuestionIndex
 
@@ -59,12 +62,36 @@ let shuffledQuestions, currentQuestionIndex
 startButton.addEventListener('click', startGame);
 
 function startGame() {
-    console.log('Started');
+    // console.log('Started');
     startScreenEl.style.display = 'none';
+    shuffledQuestions = questions.sort(() => Math.random() - 0.5);
+    currentQuestionIndex = 0
     quizScreenEl.style.display = 'flex';
+    setNextQuestion()
     
 }
 
+function setNextQuestion() {
+    showQuestion(shuffledQuestions[currentQuestionIndex]);
+}
+
+function showQuestion(question) {
+    questionEl.innerText = question.question;
+    questionEl.answers.forEach(answer => {
+        let button = document.createElement('button');
+        button.innerText = answer.text;
+        button.classList.add('btn');
+        if (answer.correct) {
+            button.dataset.correct = answer.correct
+        }
+        button.addEventListener('click', selectAnswer)
+        answerEl.appendChild(button)
+    })
+}
+
+function selectAnswer() {
+    
+}
 
 
 
