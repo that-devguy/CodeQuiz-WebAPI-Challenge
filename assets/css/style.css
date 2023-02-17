@@ -98,8 +98,24 @@ button:hover {
 .count-down {
     display: flex;
     justify-content: flex-end;
-    font-size: 1.5rem;
+    font-size: 1rem;
     font-weight: 700;
+}
+
+.count-down i {
+    display: flex;
+    justify-content: flex-end;
+    margin: 0;
+    font-size: 2rem;
+    color: var(--color2);
+}
+
+#time-remaining {
+    font-size: 1.75rem;
+    padding-left: .5rem;
+    margin-right: -2rem;
+    display: flex;
+    font-family: var(--text1);
 }
 
 #answers {

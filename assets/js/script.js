@@ -60,6 +60,8 @@ let resultText = document.getElementById('result-text');
 
 
 let shuffledQuestions, currentQuestionIndex;
+let timeRemaining = 75;
+let timeIntervalId;
 
 
 startButton.addEventListener('click', startGame);
@@ -75,8 +77,20 @@ function startGame() {
     currentQuestionIndex = 0;
     quizScreenEl.style.display = 'flex';
     setNextQuestion();
+    startTimer();
     
 };
+
+function startTimer() {
+    timeIntervalId = setInterval(function() {
+        timeRemaining--;
+        timeRemainingEl.textContent = timeRemaining;
+        if (timeRemaining <= 0) {
+            clearInterval(timeIntervalId);
+            endGame();
+        }
+    }, 1000);
+}
 
 function setNextQuestion() {
     clearQuestion();
@@ -116,9 +130,11 @@ function checkAnswer(button, correct) {
     if (correct) {
         resultText.textContent = ('Correct');
         resultEl.style.visibility = "visible";
-    } 
-    else {
+    } else {
         resultText.textContent = ('Wrong');
         resultEl.style.visibility = "visible";
+        //if the answer is not correct subtracts 10 seconds from the timer and updates it's display
+        timeRemaining -= 10;
+        timeRemainingEl.textContent = timeRemaining;
     }
 };
