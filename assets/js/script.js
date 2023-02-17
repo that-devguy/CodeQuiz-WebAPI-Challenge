@@ -75,9 +75,10 @@ function setNextQuestion() {
     showQuestion(shuffledQuestions[currentQuestionIndex]);
 }
 
+// displays the question to the screen and verifies the answers are correct
 function showQuestion(question) {
     questionEl.innerText = question.question;
-    questionEl.answers.forEach(answer => {
+    question.answers.forEach(answer => {
         let button = document.createElement('button');
         button.innerText = answer.text;
         button.classList.add('btn');
@@ -86,8 +87,10 @@ function showQuestion(question) {
         }
         button.addEventListener('click', selectAnswer)
         answerEl.appendChild(button)
+        console.log(questionEl.answers);
     })
 }
+
 
 function selectAnswer() {
     
