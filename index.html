@@ -11,7 +11,12 @@
 </head>
 <body>
     <header>
-        <a href="" class="high-scores">View high scores</a>
+        <!-- highscores link -->
+        <button id="high-scores" style="display:flex"><i class="fa-solid fa-ranking-star"></i>View high scores</button>
+        <!-- go back to start quiz screen link -->
+        <button id="back-btn" style="display:none"><i class="fa-solid fa-left-long"></i>Back</button>
+        <!-- play again, functions same as go back link -->
+        <button id="play-again-btn" style="display:none"><i class="fa-solid fa-rotate-left"></i>Play again</button>
     </header>
 <!-- start screen section -->
     <div class="container" id="start-screen">
@@ -39,11 +44,21 @@
     </div>
 <!-- save highscore screen section -->
     <div class="container" id="save-highscore" style="display:none">
-    
+        <i class="fa-solid fa-code"></i>
+        <h1>GAME OVER</h1>
+        <p class="desc">Congratulations, your final score is <span id="score">.</span></p>
+        <div class="initials-field">
+            <p class="desc">Enter your initials (3 Letters):</p>
+            <input type="text" id="initials-input" maxlength="3">
+            <button class="btn" id="save-score-btn">Submit</button>
+        </div>
     </div>
 <!-- highscores screen section -->
     <div class="container" id="highscores-screen" style="display:none">
-
+        <div class="highscores-title">
+            <h2>HIGH SCORES</h2>
+            <i class="fa-solid fa-ranking-star"></i>
+        </div>
     </div>
     <footer>
         <h4>Made with 🧡 by that_<span id="dev">dev</span>guy</h4>

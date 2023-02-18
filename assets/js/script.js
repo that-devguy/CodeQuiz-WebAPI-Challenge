@@ -59,6 +59,10 @@ let resultEl = document.getElementById('result');
 let resultText = document.getElementById('result-text');
 let highScoreEl = document.getElementById('highscores-screen');
 let saveScoreEl = document.getElementById('save-highscore');
+let viewScoresButton = document.getElementById('high-scores');
+let backButton = document.getElementById('back-btn');
+let playAgainButton = document.getElementById('play-again-btn');
+let submitScoreButton = document.getElementById('save-score-btn');
 
 
 let shuffledQuestions, currentQuestionIndex;
@@ -72,9 +76,15 @@ answerEl.addEventListener('click', () => {
     setNextQuestion();
 });
 
+viewScoresButton.addEventListener('click', viewScores);
+backButton.addEventListener('click', goBack);
+submitScoreButton.addEventListener('click', submitScore);
+playAgainButton.addEventListener('click', playAgain);
+
 function startGame() {
     // console.log('Started');
     startScreenEl.style.display = 'none';
+    viewScoresButton.style.visibility = 'hidden';
     shuffledQuestions = questions.sort(() => Math.random() - 0.5);
     currentQuestionIndex = 0;
     quizScreenEl.style.display = 'flex';
@@ -144,4 +154,34 @@ function endGame() {
     clearInterval(timeIntervalId);
     quizScreenEl.style.display = "none";
     saveScoreEl.style.display = "flex";
+}
+
+function viewScores() {
+    startScreenEl.style.display = "none";
+    highScoreEl.style.display = "flex";
+    viewScoresButton.style.display = "none";
+    backButton.style.display = "flex";
+}
+
+function goBack() {
+    highScoreEl.style.display = "none";
+    startScreenEl.style.display = "flex";
+    backButton.style.display = "none";
+    viewScoresButton.style.display = "flex";
+}
+
+function playAgain() {
+    highScoreEl.style.display = "none";
+    startScreenEl.style.display = "flex";
+    backButton.style.display = "none";
+    playAgainButton.style.display = "none";
+    viewScoresButton.style.display = "flex";
+    viewScoresButton.style.visibility = 'visible';
+}
+
+function submitScore() {
+    saveScoreEl.style.display = "none";
+    highScoreEl.style.display = "flex";
+    playAgainButton.style.display = "flex";
+    viewScoresButton.style.display ="none";
 }
