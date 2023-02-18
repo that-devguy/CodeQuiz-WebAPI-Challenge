@@ -129,10 +129,10 @@ function selectAnswer(e) {
 
 function checkAnswer(button, correct) {
     if (correct) {
-        resultText.textContent = ('Correct');
+        resultText.textContent = ('Correct!');
         resultEl.style.visibility = "visible";
     } else {
-        resultText.textContent = ('Wrong');
+        resultText.textContent = ('Wrong!');
         resultEl.style.visibility = "visible";
         //if the answer is not correct subtracts 10 seconds from the timer and updates it's display
         timeRemaining -= 10;
