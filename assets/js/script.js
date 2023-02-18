@@ -138,3 +138,7 @@ function checkAnswer(button, correct) {
         timeRemainingEl.textContent = timeRemaining;
     }
 };
+
+function endGame() {
+    
+}
