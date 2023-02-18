@@ -57,6 +57,8 @@ let answerEl = document.getElementById('answers');
 let nextButton = document.getElementById('next-btn');
 let resultEl = document.getElementById('result');
 let resultText = document.getElementById('result-text');
+let highScoreEl = document.getElementById('highscores-screen');
+let saveScoreEl = document.getElementById('save-highscore');
 
 
 let shuffledQuestions, currentQuestionIndex;
@@ -78,7 +80,6 @@ function startGame() {
     quizScreenEl.style.display = 'flex';
     setNextQuestion();
     startTimer();
-    
 };
 
 function startTimer() {
@@ -140,5 +141,7 @@ function checkAnswer(button, correct) {
 };
 
 function endGame() {
-    
+    clearInterval(timeIntervalId);
+    quizScreenEl.style.display = "none";
+    saveScoreEl.style.display = "flex";
 }
