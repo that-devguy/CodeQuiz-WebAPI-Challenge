@@ -170,6 +170,7 @@ function goBack() {
     viewScoresButton.style.display = "flex";
 }
 
+//
 function playAgain() {
     highScoreEl.style.display = "none";
     startScreenEl.style.display = "flex";
@@ -179,6 +180,7 @@ function playAgain() {
     viewScoresButton.style.visibility = 'visible';
 }
 
+//changes to highscore screen and replaces nav button with play again
 function submitScore() {
     saveScoreEl.style.display = "none";
     highScoreEl.style.display = "flex";
