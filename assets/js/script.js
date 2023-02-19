@@ -63,6 +63,8 @@ let viewScoresButton = document.getElementById('high-scores');
 let backButton = document.getElementById('back-btn');
 let playAgainButton = document.getElementById('play-again-btn');
 let submitScoreButton = document.getElementById('save-score-btn');
+let initialsInputEl = document.getElementById('initials-input');
+let recentScoreEl = document.getElementById('score');
 
 
 let shuffledQuestions, currentQuestionIndex;
@@ -159,6 +161,8 @@ function checkAnswer(button, correct) {
 };
 
 function endGame() {
+    let score = timeRemaining;
+    recentScoreEl.textContent = score;
     clearInterval(timeIntervalId);
     timeRemaining = 75;
     timeRemainingEl.textContent = timeRemaining;

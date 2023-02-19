@@ -187,6 +187,11 @@ hr {
     margin: 0 1rem;
 }
 
+#score {
+    font-size: 2rem;
+    font-weight: 700;
+}
+
 .highscores-title {
     display: flex;
     flex-direction: row;
