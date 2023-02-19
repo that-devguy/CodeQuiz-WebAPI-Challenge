@@ -97,15 +97,19 @@ function startTimer() {
         timeRemaining--;
         timeRemainingEl.textContent = timeRemaining;
         if (timeRemaining <= 0) {
-            clearInterval(timeIntervalId);
             endGame();
         }
     }, 1000);
 }
 
+//sets new question, if there is no questions left triggers endGame
 function setNextQuestion() {
     clearQuestion();
-    showQuestion(shuffledQuestions[currentQuestionIndex]);
+    if (currentQuestionIndex >= shuffledQuestions.length) {
+        endGame();
+    } else {
+        showQuestion(shuffledQuestions[currentQuestionIndex]);
+    }
 };
 
 // displays the question to the screen and verifies the answers are correct
@@ -146,12 +150,18 @@ function checkAnswer(button, correct) {
         resultEl.style.visibility = "visible";
         //if the answer is not correct subtracts 10 seconds from the timer and updates it's display
         timeRemaining -= 10;
+        //prevents the timer from displaying a number less than 0
+        if (timeRemaining < 0) {
+            timeRemaining = 0;
+        }
         timeRemainingEl.textContent = timeRemaining;
     }
 };
 
 function endGame() {
     clearInterval(timeIntervalId);
+    timeRemaining = 75;
+    timeRemainingEl.textContent = timeRemaining;
     quizScreenEl.style.display = "none";
     saveScoreEl.style.display = "flex";
 }
@@ -170,7 +180,6 @@ function goBack() {
     viewScoresButton.style.display = "flex";
 }
 
-//
 function playAgain() {
     highScoreEl.style.display = "none";
     startScreenEl.style.display = "flex";

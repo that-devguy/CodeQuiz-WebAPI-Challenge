@@ -49,14 +49,15 @@
         <p class="desc">Congratulations, your final score is <span id="score">.</span></p>
         <div class="initials-field">
             <p class="desc">Enter your initials (3 Letters):</p>
-            <input type="text" id="initials-input" maxlength="3">
+            <!-- automatically capitalizes input with max 3 characters -->
+            <input type="text" id="initials-input" maxlength="3" oninput="this.value = this.value.toUpperCase()">
             <button class="btn" id="save-score-btn">Submit</button>
         </div>
     </div>
 <!-- highscores screen section -->
     <div class="container" id="highscores-screen" style="display:none">
         <div class="highscores-title">
-            <h2>HIGH SCORES</h2>
+            <h2>High scores</h2>
             <i class="fa-solid fa-ranking-star"></i>
         </div>
     </div>
