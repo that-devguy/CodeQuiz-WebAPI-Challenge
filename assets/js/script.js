@@ -65,11 +65,24 @@ let playAgainButton = document.getElementById('play-again-btn');
 let submitScoreButton = document.getElementById('save-score-btn');
 let initialsInputEl = document.getElementById('initials-input');
 let recentScoreEl = document.getElementById('score');
+let highscoreListEl = document.getElementById('highscores-list');
 
 
 let shuffledQuestions, currentQuestionIndex;
 let timeRemaining = 75;
 let timeIntervalId;
+let highscores = [];
+
+// clears local storage -- CANNOT BE UNDONE! ONLY USE TO WIPE HIGHSCORES
+// localStorage.clear();
+
+// loads the local storage to the page
+window.addEventListener('load', function() {
+    let savedScores = localStorage.getItem('highscores');
+    if (savedScores) {
+        highscores = JSON.parse(savedScores);
+    }
+});
 
 
 startButton.addEventListener('click', startGame);
@@ -78,7 +91,10 @@ answerEl.addEventListener('click', () => {
     setNextQuestion();
 });
 
-viewScoresButton.addEventListener('click', viewScores);
+viewScoresButton.addEventListener('click', function () {
+    viewScores();
+    displayHighscores();
+});
 backButton.addEventListener('click', goBack);
 submitScoreButton.addEventListener('click', submitScore);
 playAgainButton.addEventListener('click', playAgain);
@@ -193,10 +209,33 @@ function playAgain() {
     viewScoresButton.style.visibility = 'visible';
 }
 
-//changes to highscore screen and replaces nav button with play again
+//saves score and name then displays highscore screen with play again button
 function submitScore() {
     saveScoreEl.style.display = "none";
     highScoreEl.style.display = "flex";
     playAgainButton.style.display = "flex";
     viewScoresButton.style.display ="none";
+    let initials = initialsInputEl.value.trim();
+    let score = parseInt(recentScoreEl.textContent);
+    if (initials && score) {
+        highscores.push({ initials: initials, score: score });
+        localStorage.setItem('highscores', JSON.stringify(highscores));
+    }
+    displayHighscores();
+}
+
+//clears the highscores list and displays them with new entries
+function displayHighscores() {
+    highscores.sort(function(a, b) {
+        return b.score - a.score;
+    });
+    //only displays the top 5 scores
+    highscores = highscores.slice(0, 5);
+    highscoreListEl.innerHTML = "";
+    highscores.forEach(function(highscore) {
+        let highscoreItem = document.createElement('li');
+        highscoreItem.textContent = highscore.initials + ' - ' + highscore.score;
+        highscoreListEl.appendChild(document.createElement('hr'));
+        highscoreListEl.appendChild(highscoreItem);
+    });
 }

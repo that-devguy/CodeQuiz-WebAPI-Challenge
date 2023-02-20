@@ -199,12 +199,18 @@ hr {
 }
 
 .highscores-title h2{
-    margin: 0;
+    margin-bottom: 1.5rem;
 }
 
 .highscores-title i {
     margin: 0;
     padding: 0;
+}
+
+#highscores-list li {
+    font-size: 2rem;
+    margin: 0 0 2rem 0;
+    font-style: italic;
 }
 
 footer {
