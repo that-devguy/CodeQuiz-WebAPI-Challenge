@@ -103,6 +103,7 @@ function startGame() {
     // console.log('Started');
     startScreenEl.style.display = 'none';
     viewScoresButton.style.visibility = 'hidden';
+    resultEl.style.visibility = "hidden";
     shuffledQuestions = questions.sort(() => Math.random() - 0.5);
     currentQuestionIndex = 0;
     quizScreenEl.style.display = 'flex';
